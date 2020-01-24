@@ -32,8 +32,8 @@ combine    = True # Combines all exposures of an object's spectra, taking accoun
 zfit       = True # Fit the spectra to a redshift. Currently the range is defined from 0.1 to 0.5.
 
 [PIPE_OPTIONS]
-make_mtl    = True # If true, will look for field file and combine with header information to create a merged-target-list
-make_mtlz   = True # If true will combine the mtl with additional header information and redshift results (only useful after redshift fitting).
+make_mtl    = False # If true, will look for field file and combine with header information to create a merged-target-list
+make_mtlz   = False # If true will combine the mtl with additional header information and redshift results (only useful after redshift fitting).
 
 
 Other relevant settings you may wish to set:
@@ -55,10 +55,15 @@ python3 quickreduce.py -m A09 -p ./config/pipeline.ini
 10) Assuming you are using all default settings, the summary plots can be viewed at any time from:
 /path/to/M2FSreduce_example/m2fs_valadded_data/${mask_name}/summary_plots
 
-11) Again assuming defaults, the merged target list and mtlz files can be found at:
+11) If you would like a merged target list with target and fiber information, you can rerun the pipeline with all steps set to False, but make_mtl and make_mtlz set to True:
+[PIPE_OPTIONS]
+make_mtl    = False # If true, will look for field file and combine with header information to create a merged-target-list
+make_mtlz   = False # If true will combine the mtl with additional header information and redshift results (only useful after redshift fitting).
+
+12) Again assuming defaults, the merged target list and mtlz files can be found at:
 /path/to/M2FSreduce_example/m2fs_valadded_data/catalogs/ merged_target_lists
 
-12) A fits file with the final spectra and masks are in:
+13) A fits file with the final spectra and masks are in:
 /path/to/M2FSreduce_example/m2fs_valadded_data/${mask_name}/final_oned
 
 And the redshift tables are in:

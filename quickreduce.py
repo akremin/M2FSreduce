@@ -76,7 +76,9 @@ def pipeline(maskname=None,obs_config_name=None,io_config_name=None, pipe_config
     pipe_options = dict(pipe_config['PIPE_OPTIONS'])
 
     if boolify(pipe_options['make_mtl']) and \
-            io_config['SPECIALFILES']['mtl'].lower() != 'none':
+            io_config['SPECIALFILES']['mtl'].lower() != 'none' and \
+            os.path.exists(filemanager.directory.dirname_dict['wavecalib']['write']) and \
+            len(os.listdir(filemanager.directory.dirname_dict['wavecalib']['write']))>0:
         from pyM2FS.create_merged_target_list import make_mtl
         make_mtl(io_config,filenumbers['science'][0],vizier_catalogs=['sdss12'], \
                    overwrite_field=False, overwrite_redshifts = False)
@@ -115,7 +117,9 @@ def pipeline(maskname=None,obs_config_name=None,io_config_name=None, pipe_config
                     pkl.dump(data.all_hdus,crashsave)
                 raise()
 
-    if boolify(pipe_options['make_mtlz']) and ((io_config['SPECIALFILES']['mtlz'].lower()) != 'none'):
+    if boolify(pipe_options['make_mtlz']) and ((io_config['SPECIALFILES']['mtlz'].lower()) != 'none') and \
+            os.path.exists(filemanager.directory.dirname_dict['zfit']['write']) and \
+            len(os.listdir(filemanager.directory.dirname_dict['zfit']['write'])) > 0:
         cams = instrument.cameras
         make_mtlz_wrapper(data, filemanager, io_config, step, do_step_bool, pipe_options, cams)
     else:
