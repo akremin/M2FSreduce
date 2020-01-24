@@ -79,11 +79,11 @@ def read_io_config(io_config_name, pipe_dict, maskname):
                 pipe_dict['GENERAL']['path_to_masks']).lower() != 'none':
             io_config.add_section('PATHS')
             io_config['PATHS']['path_to_masks'] = pipe_dict['GENERAL']['path_to_masks']
-        if 'raw_data_loc' in pipe_dict['GENERAL'].keys() and str(
-                pipe_dict['GENERAL']['raw_data_loc']).lower() != 'none':
+        if 'raw_data_path' in pipe_dict['GENERAL'].keys() and str(
+                pipe_dict['GENERAL']['raw_data_path']).lower() != 'none':
             if 'PATHS' not in io_config.sections():
                 io_config.add_section('PATHS')
-            io_config['PATHS']['raw_data_loc'] = pipe_dict['GENERAL']['raw_data_loc']
+            io_config['PATHS']['raw_data_path'] = pipe_dict['GENERAL']['raw_data_path']
         if 'data_product_loc' in pipe_dict['GENERAL'].keys() and str(
                 pipe_dict['GENERAL']['data_product_loc']).lower() != 'none':
             if 'PATHS' not in io_config.sections():
