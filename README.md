@@ -10,8 +10,6 @@ Note:
 
 * Code produced by Anthony Kremin for M2FS on the 6.5 Magellan-Clay telescope. 
 
-Eventually documentation for using the pipeline will be available as an IPython notebook in the docs/ subdirectory.
-
 The code is run from a "quickreduce file." The standard quickreduce can be run from the command
 line with:
 
